@@ -1,26 +1,24 @@
 import React from 'react';
 import propTypes from 'prop-types';
-import {
-  ContactListUl,
-  ContactListLi,
-  ButtonDelete,
-} from './ContactList.styled';
+import * as SC from './ContactList.styled';
 import { FcPhoneAndroid } from 'react-icons/fc';
 
 export const ContactList = ({ contacts, deleteContact }) => (
-  <ContactListUl>
+  <SC.ContactListUl>
     {contacts.map((contact, id) => (
-      <ContactListLi key={id}>
+      <SC.ContactListLi key={id}>
         <FcPhoneAndroid />
         {contact.name}: {contact.number}
-        <ButtonDelete type="button" onClick={() => deleteContact(contact.id)}>
+        <SC.ButtonDelete
+          type="button"
+          onClick={() => deleteContact(contact.id)}
+        >
           Delete
-        </ButtonDelete>
-      </ContactListLi>
+        </SC.ButtonDelete>
+      </SC.ContactListLi>
     ))}
-  </ContactListUl>
+  </SC.ContactListUl>
 );
-
 ContactList.propTypes = {
   deleteContact: propTypes.func.isRequired,
   contacts: propTypes.arrayOf(
